@@ -1,0 +1,15 @@
+#!/bin/bash
+
+window_class="stalonetray"
+
+# get window id
+window_id=$(xdotool search --class $window_class)
+
+# check window state
+window_status=$(xwininfo -id $window_id | grep "Map State" | awk '{print $3}')
+
+if [ "$window_status" == "IsViewable" ]; then
+    xdotool windowunmap $window_id
+else
+    xdotool windowmap $window_id
+fi
