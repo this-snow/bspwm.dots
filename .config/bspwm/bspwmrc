@@ -33,11 +33,14 @@ bspc config pointer_action2				resize_side
 bspc config pointer_action3				resize_corner
 
 # Autostart Programs
-feh -z --no-fehbg --bg-fill $HOME/Bilder/Hintergründe/stylized-snowy-mountain-landscape-3440x1440-v0-p6p4x7xnd4vb1.png
+/usr/libexec/polkit-gnome-authentication-agent-1 &
 gentoo-pipewire-launcher &
 picom --daemon &
+feh -z --no-fehbg --bg-fill ~/Wall/NeonWall/neon-3.png
 dunst &
 $HOME/.config/polybar/launch.sh
-stalonetray --window-type normal &
+stalonetray &
 sleep 0.5
 xdotool windowunmap "$(xdotool search --class stalonetray)"
+nm-applet &
+setxkbmap eu
